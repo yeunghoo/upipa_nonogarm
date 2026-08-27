@@ -1,0 +1,6 @@
+framework module SmartdigimktSDK {
+  umbrella header "SmartdigimktSDK.h"
+  export *
+
+  module * { export * }
+}

@@ -1,0 +1,40 @@
+# Xcode / macOS
+.DS_Store
+**/xcuserdata/
+*.xcuserstate
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+build/
+DerivedData/
+Archives/
+*.xcarchive
+
+# Secrets / signing (never commit)
+*.p12
+*.mobileprovision
+*.cer
+*.certSigningRequest
+AuthKey_*.p8
+ci/secrets/
+
+# CocoaPods — keep Podfile.lock; install Pods in CI
+# (Pods committed for TopOn CDN reliability — uncomment ignore if preferred)
+# Pods/
+
+# Ruby / bundler
+vendor/bundle/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Misc
+*.log
+.env
+.env.*
+!.env.example

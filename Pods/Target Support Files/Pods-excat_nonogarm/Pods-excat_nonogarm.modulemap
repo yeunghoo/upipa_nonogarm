@@ -1,0 +1,6 @@
+framework module Pods_excat_nonogarm {
+  umbrella header "Pods-excat_nonogarm-umbrella.h"
+
+  export *
+  module * { export * }
+}

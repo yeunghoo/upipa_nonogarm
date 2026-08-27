@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "exact_garm_nonogarm_icon_001.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

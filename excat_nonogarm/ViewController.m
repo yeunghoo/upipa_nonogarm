@@ -15,7 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Root view controller is set programmatically in SceneDelegate.
+    // This file is kept as a placeholder.
 }
 
 

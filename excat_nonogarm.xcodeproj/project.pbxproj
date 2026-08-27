@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		95BB596995C72B28FC9DA7BA /* Pods_excat_nonogarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A84E9B3B2FA608B508D43A /* Pods_excat_nonogarm.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C2A089642FA0A1370039995A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51A84E9B3B2FA608B508D43A /* Pods_excat_nonogarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_excat_nonogarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CDB1ACB82595EF68C8F2C50 /* Pods-excat_nonogarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-excat_nonogarm.debug.xcconfig"; path = "Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A089482FA0A1360039995A /* excat_nonogarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = excat_nonogarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A089632FA0A1370039995A /* excat_nonogarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = excat_nonogarmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A0896D2FA0A1370039995A /* excat_nonogarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = excat_nonogarmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC47DA5B4879E7073FAE8699 /* Pods-excat_nonogarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-excat_nonogarm.release.xcconfig"; path = "Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95BB596995C72B28FC9DA7BA /* Pods_excat_nonogarm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D7C97E1138CED8085A11897 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51A84E9B3B2FA608B508D43A /* Pods_excat_nonogarm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C2A0893F2FA0A1360039995A = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,8 @@
 				C2A089662FA0A1370039995A /* excat_nonogarmTests */,
 				C2A089702FA0A1370039995A /* excat_nonogarmUITests */,
 				C2A089492FA0A1360039995A /* Products */,
+				F1B80F7376D022050544A873 /* Pods */,
+				2D7C97E1138CED8085A11897 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +123,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F1B80F7376D022050544A873 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CDB1ACB82595EF68C8F2C50 /* Pods-excat_nonogarm.debug.xcconfig */,
+				DC47DA5B4879E7073FAE8699 /* Pods-excat_nonogarm.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2A089762FA0A1370039995A /* Build configuration list for PBXNativeTarget "excat_nonogarm" */;
 			buildPhases = (
+				731294B2A9914E62585EDA62 /* [CP] Check Pods Manifest.lock */,
 				C2A089442FA0A1360039995A /* Sources */,
 				C2A089452FA0A1360039995A /* Frameworks */,
 				C2A089462FA0A1360039995A /* Resources */,
+				6513C0A622524C65C8A33CCD /* [CP] Embed Pods Frameworks */,
+				3CDB19463D3899F8C01D1539 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,8 +154,6 @@
 				C2A0894A2FA0A1360039995A /* excat_nonogarm */,
 			);
 			name = excat_nonogarm;
-			packageProductDependencies = (
-			);
 			productName = excat_nonogarm;
 			productReference = C2A089482FA0A1360039995A /* excat_nonogarm.app */;
 			productType = "com.apple.product-type.application";
@@ -147,8 +175,6 @@
 				C2A089662FA0A1370039995A /* excat_nonogarmTests */,
 			);
 			name = excat_nonogarmTests;
-			packageProductDependencies = (
-			);
 			productName = excat_nonogarmTests;
 			productReference = C2A089632FA0A1370039995A /* excat_nonogarmTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -170,8 +196,6 @@
 				C2A089702FA0A1370039995A /* excat_nonogarmUITests */,
 			);
 			name = excat_nonogarmUITests;
-			packageProductDependencies = (
-			);
 			productName = excat_nonogarmUITests;
 			productReference = C2A0896D2FA0A1370039995A /* excat_nonogarmUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -243,6 +267,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3CDB19463D3899F8C01D1539 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6513C0A622524C65C8A33CCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		731294B2A9914E62585EDA62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-excat_nonogarm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C2A089442FA0A1360039995A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -283,56 +374,78 @@
 /* Begin XCBuildConfiguration section */
 		C2A089772FA0A1370039995A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CDB1ACB82595EF68C8F2C50 /* Pods-excat_nonogarm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6CYF87J986;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1.0;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 53WUU8STZ6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = excat_nonogarm/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exactigram - Nonogram";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use tracking to provide you with personalized ads and improve your app experience. Your data helps us deliver relevant content and measure ad performance.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "liugang.excat-nonogarm";
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puzzle.exact.nonogarm.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Exactigram - Nonogram";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		C2A089782FA0A1370039995A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC47DA5B4879E7073FAE8699 /* Pods-excat_nonogarm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6CYF87J986;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1.0;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 53WUU8STZ6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = excat_nonogarm/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exactigram - Nonogram";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use tracking to provide you with personalized ads and improve your app experience. Your data helps us deliver relevant content and measure ad performance.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "liugang.excat-nonogarm";
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puzzle.exact.nonogarm.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Exactigram - Nonogram";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -375,7 +488,7 @@
 				DEVELOPMENT_TEAM = 6CYF87J986;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -437,7 +550,7 @@
 				DEVELOPMENT_TEAM = 6CYF87J986;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -459,9 +572,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CYF87J986;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
@@ -469,6 +584,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/excat_nonogarm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/excat_nonogarm";
 			};
@@ -478,9 +594,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CYF87J986;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
@@ -488,6 +606,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/excat_nonogarm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/excat_nonogarm";
 			};
@@ -496,15 +615,18 @@
 		C2A0897F2FA0A1370039995A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CYF87J986;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "liugang.excat-nonogarmUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = excat_nonogarm;
 			};
@@ -513,15 +635,18 @@
 		C2A089802FA0A1370039995A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6CYF87J986;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "liugang.excat-nonogarmUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = excat_nonogarm;
 			};

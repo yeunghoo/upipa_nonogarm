@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "exact_garm_nonogarm_icon_001.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

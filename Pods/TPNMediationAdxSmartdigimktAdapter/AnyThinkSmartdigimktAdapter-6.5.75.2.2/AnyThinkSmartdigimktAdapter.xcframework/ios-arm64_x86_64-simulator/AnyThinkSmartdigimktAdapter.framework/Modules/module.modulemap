@@ -1,0 +1,6 @@
+framework module AnyThinkSmartdigimktAdapter {
+  umbrella header "AnyThinkSmartdigimktAdapter.h"
+  export *
+
+  module * { export * }
+}

@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "VTAdProxy.h"
 
 @interface AppDelegate ()
 
@@ -15,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [VTAdProxy vt_launch];
     return YES;
 }
 

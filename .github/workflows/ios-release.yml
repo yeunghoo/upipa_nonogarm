@@ -1,0 +1,118 @@
+name: iOS Build & Upload
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+concurrency:
+  group: ios-release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-upload:
+    name: Archive, Export IPA, Upload ASC
+    runs-on: macos-15
+    timeout-minutes: 90
+
+    env:
+      PROJECT_NAME: excat_nonogarm
+      SCHEME: excat_nonogarm
+      WORKSPACE: excat_nonogarm.xcworkspace
+      BUNDLE_ID: com.puzzle.exact.nonogarm.app
+      TEAM_ID: 53WUU8STZ6
+      PROFILE_NAME: Exactigram - Nonogram
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          # Prefer latest available Xcode on the runner
+          ls /Applications | grep -i Xcode || true
+          sudo xcode-select -s /Applications/Xcode.app
+          xcodebuild -version
+
+      - name: Install CocoaPods deps
+        run: |
+          gem install cocoapods --no-document
+          pod install --repo-update
+
+      - name: Import signing assets
+        env:
+          IOS_P12_BASE64: ${{ secrets.IOS_P12_BASE64 }}
+          IOS_P12_PASSWORD: ${{ secrets.IOS_P12_PASSWORD }}
+          IOS_PROVISION_BASE64: ${{ secrets.IOS_PROVISION_BASE64 }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          set -euo pipefail
+          KEYCHAIN_PATH="$RUNNER_TEMP/app-signing.keychain-db"
+          CERT_PATH="$RUNNER_TEMP/certificate.p12"
+          PROFILE_PATH="$RUNNER_TEMP/profile.mobileprovision"
+
+          echo "$IOS_P12_BASE64" | base64 --decode > "$CERT_PATH"
+          echo "$IOS_PROVISION_BASE64" | base64 --decode > "$PROFILE_PATH"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERT_PATH" -P "$IOS_P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH"
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          PROFILE_UUID=$(security cms -D -i "$PROFILE_PATH" | plutil -extract UUID raw -)
+          cp "$PROFILE_PATH" "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
+          echo "Installed profile UUID=$PROFILE_UUID"
+
+      - name: Archive
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          set -o pipefail
+          # Do not pass PROVISIONING_PROFILE_SPECIFIER globally — it breaks CocoaPods targets.
+          # App target signing comes from project.pbxproj (Manual + Exactigram - Nonogram).
+          xcodebuild \
+            -workspace "$WORKSPACE" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath "$PWD/build/${PROJECT_NAME}.xcarchive" \
+            clean archive \
+            | tee build/archive.log
+          test -d "$PWD/build/${PROJECT_NAME}.xcarchive"
+
+      - name: Export IPA
+        run: |
+          set -euo pipefail
+          xcodebuild -exportArchive \
+            -archivePath "$PWD/build/${PROJECT_NAME}.xcarchive" \
+            -exportPath "$PWD/build/export" \
+            -exportOptionsPlist ci/ExportOptions.plist
+          ls -la build/export
+          IPA_PATH=$(ls build/export/*.ipa | head -1)
+          echo "IPA_PATH=$IPA_PATH" >> "$GITHUB_ENV"
+          echo "Exported: $IPA_PATH"
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}-ipa
+          path: build/export/*.ipa
+          if-no-files-found: error
+
+      - name: Upload to App Store Connect
+        env:
+          ASC_USERNAME: ${{ secrets.ASC_USERNAME }}
+          ASC_PASSWORD: ${{ secrets.ASC_PASSWORD }}
+        run: |
+          set -euo pipefail
+          echo "Uploading $IPA_PATH to App Store Connect..."
+          xcrun altool --upload-app \
+            --type ios \
+            --file "$IPA_PATH" \
+            --username "$ASC_USERNAME" \
+            --password "$ASC_PASSWORD" \
+            --verbose
