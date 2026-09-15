@@ -35,9 +35,11 @@ jobs:
           # App Store Connect now requires iOS 26 SDK (Xcode 26+).
           # macos-15 default Xcode.app is still 16.x — pick Xcode 26 explicitly.
           XCODE_APP=""
+          # Prefer Xcode 26.2 (matches local green build). 26.3 can fail linking
+          # some static Swift ad SDKs (Chartboost / Vungle / Fyber).
           for candidate in \
-            /Applications/Xcode_26.3.app \
             /Applications/Xcode_26.2.app \
+            /Applications/Xcode_26.3.app \
             /Applications/Xcode_26.1.1.app \
             /Applications/Xcode_26.0.1.app \
             /Applications/Xcode_26.app; do
