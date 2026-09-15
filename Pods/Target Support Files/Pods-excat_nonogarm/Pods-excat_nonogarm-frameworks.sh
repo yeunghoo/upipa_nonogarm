@@ -177,11 +177,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/InMobiSDK/InMobiSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/SmartdigimktSDK/SmartdigimktSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNiOS/TPNSDK/AnyThinkSDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/InMobiSDK/InMobiSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/SmartdigimktSDK/SmartdigimktSDK.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNiOS/TPNSDK/AnyThinkSDK.framework"
 fi

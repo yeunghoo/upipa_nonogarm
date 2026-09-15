@@ -2,7 +2,7 @@
 //  VTAdProxy.h
 //  excat_nonogarm
 //
-//  TopOn + Meta Audience Network 广告代理（保留原有调用场景接口）
+//  TopOn 中介广告代理（ADX / Meta / Vungle / Bigo / InMobi / Chartboost / DT）
 //
 
 #import <Foundation/Foundation.h>

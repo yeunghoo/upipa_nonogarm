@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-frameworks.sh
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.framework/FBAudienceNetwork
+${PODS_XCFRAMEWORKS_BUILD_DIR}/InMobiSDK/InMobiSDK.framework/InMobiSDK
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/SmartdigimktSDK/SmartdigimktSDK.framework/SmartdigimktSDK
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNiOS/TPNSDK/AnyThinkSDK.framework/AnyThinkSDK

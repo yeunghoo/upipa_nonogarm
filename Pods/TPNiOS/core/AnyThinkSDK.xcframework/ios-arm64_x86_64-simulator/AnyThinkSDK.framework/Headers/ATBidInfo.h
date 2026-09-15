@@ -182,6 +182,7 @@ typedef NS_ENUM(NSInteger, ATADXDealType) {
 - (instancetype)initWithCacheDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)serializationToDictionary;
 
+- (void)hasBeenSendNotif;
 - (void)saveOfferModelDspID:(NSString *)offerDspID withOfferID:(NSString *)offerID;
 - (void)encryptedC2SFilledPriceWithRequestID:(NSString *)requestID publicKey:(NSString *)publicKey;
 - (void)releasCustomObject;

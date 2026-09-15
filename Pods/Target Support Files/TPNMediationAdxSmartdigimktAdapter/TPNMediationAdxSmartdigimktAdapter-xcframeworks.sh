@@ -117,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/TPNMediationAdxSmartdigimktAdapter/AnyThinkSmartdigimktAdapter-6.5.75.2.2/AnyThinkSmartdigimktAdapter.xcframework" "TPNMediationAdxSmartdigimktAdapter" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/TPNMediationAdxSmartdigimktAdapter/AnyThinkSmartdigimktAdapter-6.5.78.2.0/AnyThinkSmartdigimktAdapter.xcframework" "TPNMediationAdxSmartdigimktAdapter" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

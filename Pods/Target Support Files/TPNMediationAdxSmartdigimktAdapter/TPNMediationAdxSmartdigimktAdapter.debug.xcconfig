@@ -1,6 +1,6 @@
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/TPNMediationAdxSmartdigimktAdapter
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/SmartdigimktSDK/SmartDigimktSDK" "${PODS_ROOT}/TPNMediationAdxSmartdigimktAdapter/AnyThinkSmartdigimktAdapter-6.5.75.2.2" "${PODS_ROOT}/TPNiOS/core" "${PODS_XCFRAMEWORKS_BUILD_DIR}/SmartdigimktSDK" "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNMediationAdxSmartdigimktAdapter" "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNiOS/TPNSDK"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/SmartdigimktSDK/SmartDigimktSDK" "${PODS_ROOT}/TPNMediationAdxSmartdigimktAdapter/AnyThinkSmartdigimktAdapter-6.5.78.2.0" "${PODS_ROOT}/TPNiOS/core" "${PODS_XCFRAMEWORKS_BUILD_DIR}/SmartdigimktSDK" "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNMediationAdxSmartdigimktAdapter" "${PODS_XCFRAMEWORKS_BUILD_DIR}/TPNiOS/TPNSDK"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 OTHER_LDFLAGS = $(inherited) -l"ObjC"
 PODS_BUILD_DIR = ${BUILD_DIR}

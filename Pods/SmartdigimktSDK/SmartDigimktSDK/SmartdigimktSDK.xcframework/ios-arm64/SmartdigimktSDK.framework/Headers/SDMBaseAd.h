@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class UIViewController;
 
+FOUNDATION_EXPORT NSString * const kSDMS2SAdmPayloadKey;
+
 @interface SDMBaseAd : NSObject
 
 @property (nonatomic, copy, nullable) NSString *placementId;
@@ -31,6 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)generateHBParamWithExtraDic:(nullable NSDictionary *)extraDic
                              format:(SDMAdFormat)format
                            complete:(nonnull void(^)(NSDictionary *headerBiddingParams))complete;
+
+//+ (void)requestS2SBuyerUidWithPlacementId:(nonnull NSString *)placementId
+//                                     extra:(nullable NSDictionary *)extra
+//                                completion:(nonnull void (^)(NSString *_Nullable buyerUid, NSError *_Nullable error))completion;
 
 + (void)forceCloseAdIfNeeded;
 

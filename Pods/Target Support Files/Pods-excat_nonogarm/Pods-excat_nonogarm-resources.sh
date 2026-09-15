@@ -97,12 +97,26 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/BigoADS/BigoADS/BigoADSRes.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/BigoADS/BigoADS.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostCoreSDK/ChartboostCoreSDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationAdapterChartboost/ChartboostMediationAdapterChartboost.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationSDK/ChartboostMediationSDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle"
   install_resource "${PODS_ROOT}/SmartdigimktSDK/SmartDigimktSDK/SmartdigimktSDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/VungleAds/VungleAds.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/BigoADS/BigoADS/BigoADSRes.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/BigoADS/BigoADS.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostCoreSDK/ChartboostCoreSDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationAdapterChartboost/ChartboostMediationAdapterChartboost.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationSDK/ChartboostMediationSDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle"
   install_resource "${PODS_ROOT}/SmartdigimktSDK/SmartDigimktSDK/SmartdigimktSDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/VungleAds/VungleAds.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

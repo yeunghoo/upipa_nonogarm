@@ -55,10 +55,6 @@
 #define kATTrackerExtraFilledWithinNetworkTimeoutFlagKey  @"status"
 #define kATTrackerExtraFillRequestFlagKey  @"flag"
 #define kATTrackerExtraFillTimeKey  @"filledtime"
-/// 广告源「从请求到数据填充」的耗时。
-/// ⚠️ 历史问题：本文件后半段曾定义过同名宏（值为 @"ft_t"），后定义生效并劫持了本宏，
-/// 导致所有写入点实际写成 ft_t、data_ft 长期未上报。该同名宏已更名为
-/// kATTrackerExtraFillDateTimestampKey，本宏恢复原有语义。
 #define kATTrackerExtraDataFillTimeKey  @"data_ft"
 #define kATTrackerExtraASResultKey  @"as_result"
 #define kATTrackerExtraAppIDKey  @"app_id"
@@ -158,7 +154,7 @@
 
 /// 耗时
 #define kATTrackerExtraBidReqStartTimeKey  @"bid_req_start_t"
-#define kATTrackerExtraFillDateTimestampKey  @"ft_t"
+#define kATTrackerExtraDataFillTimeKey  @"ft_t"
 #define kATTrackerExtraDataLoadDoneTimeKey  @"filled_t"
 #define kATTrackerExtraAdReqStartTimeKey  @"req_start_t"
 #define kATTrackerExtraBidGetTokenSuccessTimesKey  @"bid_token_succ_ts"

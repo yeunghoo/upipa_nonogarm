@@ -3,20 +3,23 @@ platform :ios, '15.0'
 source 'https://cdn.cocoapods.org/'
 
 # TopOn 聚合建议静态链接，避免与三方广告 SDK 动态库冲突
-# 注：Meta Audience Network 6.22.0+ 官方改为推荐 Dynamic xcframework（CocoaPods 已按 Dynamic 分发）
+# Meta Audience Network 由 Facebook Adapter 拉取；其余为 TopOn 官方 Adapter
 use_frameworks! :linkage => :static
 
 target 'excat_nonogarm' do
-  # TopOn 核心库
-  pod 'TPNiOS', '6.5.75'
+  # TopOn 核心
+  pod 'TPNiOS', '6.5.80'
 
-  # TopOn ADX
-  pod 'TPNMediationAdxSmartdigimktAdapter', '6.5.75.2.2'
+  # TopOn ADX（必要）
+  pod 'TPNMediationAdxSmartdigimktAdapter', '6.5.78.2.0'
 
-  # Facebook / Meta Audience Network（TopOn 中介广告源）
-  # https://developers.facebook.com/documentation/audience-network/setting-up/platform-setup/ios/add-sdk
-  pod 'FBAudienceNetwork', '6.22.0'
-  pod 'TPNMediationFacebookAdapter', '6.22.0.2.0'
+  # 广告源 Adapter：Vungle / Bigo / Meta / InMobi / Chartboost / DT(Fyber)
+  pod 'TPNMediationVungleAdapter', '7.7.6.2.0'
+  pod 'TPNMediationBigoAdapter', '5.3.0.2.0'
+  pod 'TPNMediationFacebookAdapter', '6.22.0.2.1'
+  pod 'TPNMediationInmobiAdapter', '11.1.1.2.1'
+  pod 'TPNMediationChartboostAdapter', '9.11.0.2.1'
+  pod 'TPNMediationFyberAdapter', '8.4.7.2.0'
 end
 
 post_install do |installer|

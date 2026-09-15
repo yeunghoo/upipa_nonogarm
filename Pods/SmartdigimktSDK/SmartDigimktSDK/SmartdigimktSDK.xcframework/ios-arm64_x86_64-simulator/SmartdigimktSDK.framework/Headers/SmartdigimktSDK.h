@@ -8,12 +8,12 @@
 #import <SmartdigimktSDK/SDMPublicLoadingDelegate.h>
 #import <SmartdigimktSDK/SDMSDKConfiguration.h>
 #import <SmartdigimktSDK/SDMDebuggerConfig.h>
-#import <SmartdigimktSDK/SDMDeviceInfoList.h>
 #import <SmartdigimktSDK/SDMDebuggerConfigDefine.h>
 #import <SmartdigimktSDK/SDMShowConfig.h>
 #import <SmartdigimktSDK/SDMAPI.h>
 #import <SmartdigimktSDK/SDMAdFormatDefine.h>
 #import <SmartdigimktSDK/SDMSDKGlobalSetting.h>
+#import <SmartdigimktSDK/SDMDeviceInfoList.h>
 
 /// Base
 #import <SmartdigimktSDK/SDMPublicLoadingDelegate.h>

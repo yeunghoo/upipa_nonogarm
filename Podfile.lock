@@ -1,37 +1,96 @@
 PODS:
+  - BigoADS (5.3.0)
+  - ChartboostCoreSDK (1.1.0)
+  - ChartboostMediationAdapterChartboost (5.9.11.0.0):
+    - ChartboostMediationSDK (~> 5.0)
+    - ChartboostSDK (~> 9.11.0)
+  - ChartboostMediationSDK (5.4.0):
+    - ChartboostCoreSDK (~> 1.0)
+  - ChartboostSDK (9.11.0)
   - FBAudienceNetwork (6.22.0)
-  - SmartdigimktSDK (6.5.75)
-  - TPNiOS (6.5.75):
-    - TPNiOS/TPNSDK (= 6.5.75)
-  - TPNiOS/TPNSDK (6.5.75)
-  - TPNMediationAdxSmartdigimktAdapter (6.5.75.2.2):
-    - SmartdigimktSDK (= 6.5.75)
+  - Fyber_Marketplace_SDK (8.4.7)
+  - InMobiSDK (11.1.1)
+  - SmartdigimktSDK (6.5.78)
+  - TPNiOS (6.5.80):
+    - TPNiOS/TPNSDK (= 6.5.80)
+  - TPNiOS/TPNSDK (6.5.80)
+  - TPNMediationAdxSmartdigimktAdapter (6.5.78.2.0):
+    - SmartdigimktSDK (= 6.5.78)
     - TPNiOS (>= 6.5.60)
-  - TPNMediationFacebookAdapter (6.22.0.2.0):
+  - TPNMediationBigoAdapter (5.3.0.2.0):
+    - BigoADS (= 5.3.0)
+    - TPNiOS (>= 6.5.60)
+  - TPNMediationChartboostAdapter (9.11.0.2.1):
+    - ChartboostCoreSDK (= 1.1.0)
+    - ChartboostMediationAdapterChartboost (= 5.9.11.0.0)
+    - ChartboostMediationSDK (= 5.4.0)
+    - ChartboostSDK (= 9.11.0)
+    - TPNiOS (>= 6.5.60)
+  - TPNMediationFacebookAdapter (6.22.0.2.1):
     - FBAudienceNetwork (= 6.22.0)
     - TPNiOS (>= 6.5.60)
+  - TPNMediationFyberAdapter (8.4.7.2.0):
+    - Fyber_Marketplace_SDK (= 8.4.7)
+    - TPNiOS (>= 6.5.60)
+  - TPNMediationInmobiAdapter (11.1.1.2.1):
+    - InMobiSDK (= 11.1.1)
+    - TPNiOS (>= 6.5.60)
+  - TPNMediationVungleAdapter (7.7.6.2.0):
+    - TPNiOS (>= 6.5.60)
+    - VungleAds (= 7.7.6)
+  - VungleAds (7.7.6)
 
 DEPENDENCIES:
-  - FBAudienceNetwork (= 6.22.0)
-  - TPNiOS (= 6.5.75)
-  - TPNMediationAdxSmartdigimktAdapter (= 6.5.75.2.2)
-  - TPNMediationFacebookAdapter (= 6.22.0.2.0)
+  - TPNiOS (= 6.5.80)
+  - TPNMediationAdxSmartdigimktAdapter (= 6.5.78.2.0)
+  - TPNMediationBigoAdapter (= 5.3.0.2.0)
+  - TPNMediationChartboostAdapter (= 9.11.0.2.1)
+  - TPNMediationFacebookAdapter (= 6.22.0.2.1)
+  - TPNMediationFyberAdapter (= 8.4.7.2.0)
+  - TPNMediationInmobiAdapter (= 11.1.1.2.1)
+  - TPNMediationVungleAdapter (= 7.7.6.2.0)
 
 SPEC REPOS:
   trunk:
+    - BigoADS
+    - ChartboostCoreSDK
+    - ChartboostMediationAdapterChartboost
+    - ChartboostMediationSDK
+    - ChartboostSDK
     - FBAudienceNetwork
+    - Fyber_Marketplace_SDK
+    - InMobiSDK
     - SmartdigimktSDK
     - TPNiOS
     - TPNMediationAdxSmartdigimktAdapter
+    - TPNMediationBigoAdapter
+    - TPNMediationChartboostAdapter
     - TPNMediationFacebookAdapter
+    - TPNMediationFyberAdapter
+    - TPNMediationInmobiAdapter
+    - TPNMediationVungleAdapter
+    - VungleAds
 
 SPEC CHECKSUMS:
+  BigoADS: 1ae2d67ffd4d2eb72c6921bdfcdd9c1f943dbecf
+  ChartboostCoreSDK: 8da12d56eeb98fe3a7f3b15f65580c0f85986834
+  ChartboostMediationAdapterChartboost: 44b46dfcc783e3dc51bb8a112225710f00fe0d94
+  ChartboostMediationSDK: 2ca0b624ce2a03ba4ad26c93fac3dca3d2336763
+  ChartboostSDK: 4c0411cb5b6cb3705fafb40936fec3aea2c789f2
   FBAudienceNetwork: b05c65487114aa3bf3a68e865c60937a9fb03b69
-  SmartdigimktSDK: 6702ca42aad588b709b95bc32ddd80745fb68e8c
-  TPNiOS: b17b92e7bcede057195b6058150d0b73c02dc6ea
-  TPNMediationAdxSmartdigimktAdapter: a9f1670b8ef9abbac3337da676467418079f1e5e
-  TPNMediationFacebookAdapter: 76da7ff8e3486e1efb00e9ede7ff2bc7bb098fe2
+  Fyber_Marketplace_SDK: 1a880b530921ddf07a74982e163ab56eaf90e932
+  InMobiSDK: 4642fb34a961980ab94a1ac460c6e16e113498e6
+  SmartdigimktSDK: 74fd81cdc3812fc2137f4b75890f5edef8077e5b
+  TPNiOS: b2b6749e9bf8d3176b0284a24041acfdb2e634ef
+  TPNMediationAdxSmartdigimktAdapter: 752f2db0e0e8c9d0f7dbd0715a469ebace4b9d2c
+  TPNMediationBigoAdapter: 06dd72bf76e2be63354a05c8afa93f7441a47f34
+  TPNMediationChartboostAdapter: ce0c6945d563e7601274c225b34186009d501718
+  TPNMediationFacebookAdapter: b60d46e6b37e19e4a27266e6d0322639e8691f71
+  TPNMediationFyberAdapter: d25324981c910a60787011b283fd645e63c41c81
+  TPNMediationInmobiAdapter: 4c6d251045056bc4c709069d4a0ffcaf08d6b735
+  TPNMediationVungleAdapter: b4abeab312e1cf8f16ad423638f62065c0d50c94
+  VungleAds: 3b73c5e680c4c956ade61f3b0791e9b270914548
 
-PODFILE CHECKSUM: 0f46023395ae21411c7ea31b29a170d7bd29ce48
+PODFILE CHECKSUM: 4c622a35c4d8aa28c7a34300b3736e818fd99d8a
 
 COCOAPODS: 1.16.2

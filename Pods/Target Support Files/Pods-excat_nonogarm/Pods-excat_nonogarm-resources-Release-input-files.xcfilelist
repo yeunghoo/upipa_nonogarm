@@ -1,3 +1,10 @@
 ${PODS_ROOT}/Target Support Files/Pods-excat_nonogarm/Pods-excat_nonogarm-resources.sh
+${PODS_ROOT}/BigoADS/BigoADS/BigoADSRes.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/BigoADS/BigoADS.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ChartboostCoreSDK/ChartboostCoreSDK.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationAdapterChartboost/ChartboostMediationAdapterChartboost.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/ChartboostMediationSDK/ChartboostMediationSDK.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle
 ${PODS_ROOT}/SmartdigimktSDK/SmartDigimktSDK/SmartdigimktSDK.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/VungleAds/VungleAds.bundle

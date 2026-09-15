@@ -2,8 +2,9 @@
 //  VTAdProxy.m
 //  excat_nonogarm
 //
-//  TopOn（TPNiOS）+ Meta Audience Network 中介广告代理
-//  对外接口与调用场景保持不变
+//  TopOn（TPNiOS）中介广告代理
+//  广告源：ADX / Meta / Vungle / Bigo / InMobi / Chartboost / DT(Fyber)
+//  插页 & 激励：一调用 show 立刻预加载下一条，播放期间跑完瀑布流
 //
 
 #import "VTAdProxy.h"
@@ -246,7 +247,7 @@ static void VTAdLog(NSString *format, ...) {
 
 + (void)vt_launch {
     [self vt_resetSessionLog];
-    VTAdLog(@"[广告规则] ====== 广告系统点火初始化（TopOn + Facebook） ======");
+    VTAdLog(@"[广告规则] ====== 广告系统点火初始化（TopOn 多广告源中介） ======");
     vt_bnrAttempt = 0;
     vt_interAttempt = 0;
     vt_rwdAttempt = 0;
@@ -398,7 +399,12 @@ static void VTAdLog(NSString *format, ...) {
                                               delegate:[self vt_shared]];
 }
 
+/// force=YES：show 后立刻预加载下一条，即使缓存里仍有 ready 也继续请求瀑布流
 + (void)vt_loadInterstitial {
+    [self vt_loadInterstitialForce:NO];
+}
+
++ (void)vt_loadInterstitialForce:(BOOL)force {
     if (!vt_sdkReady) {
         VTAdLog(@"[插页广告] SDK 未就绪，无法加载");
         return;
@@ -407,18 +413,23 @@ static void VTAdLog(NSString *format, ...) {
         VTAdLog(@"[插页广告] 正在加载中，跳过重复请求");
         return;
     }
-    if ([[ATAdManager sharedManager] interstitialReadyForPlacementID:kVTInterstitialPID]) {
+    if (!force && [[ATAdManager sharedManager] interstitialReadyForPlacementID:kVTInterstitialPID]) {
         VTAdLog(@"[插页广告] 已就绪，跳过重复加载");
         return;
     }
     vt_interFetching = YES;
-    VTAdLog(@"[插页广告] 开始加载 placement=%@ retry=%ld", kVTInterstitialPID, (long)vt_interAttempt);
+    VTAdLog(@"[插页广告] 开始加载 placement=%@ retry=%ld force=%@",
+            kVTInterstitialPID, (long)vt_interAttempt, force ? @"YES" : @"NO");
     [[ATAdManager sharedManager] loadADWithPlacementID:kVTInterstitialPID
                                                  extra:nil
                                               delegate:[self vt_shared]];
 }
 
 + (void)vt_loadRewarded {
+    [self vt_loadRewardedForce:NO];
+}
+
++ (void)vt_loadRewardedForce:(BOOL)force {
     if (!vt_sdkReady) {
         VTAdLog(@"[激励视频] SDK 未就绪，无法加载");
         return;
@@ -427,15 +438,29 @@ static void VTAdLog(NSString *format, ...) {
         VTAdLog(@"[激励视频] 正在加载中，跳过重复请求");
         return;
     }
-    if ([[ATAdManager sharedManager] rewardedVideoReadyForPlacementID:kVTRewardedPID]) {
+    if (!force && [[ATAdManager sharedManager] rewardedVideoReadyForPlacementID:kVTRewardedPID]) {
         VTAdLog(@"[激励视频] 已就绪，跳过重复加载");
         return;
     }
     vt_rwdFetching = YES;
-    VTAdLog(@"[激励视频] 开始加载 placement=%@ retry=%ld", kVTRewardedPID, (long)vt_rwdAttempt);
+    VTAdLog(@"[激励视频] 开始加载 placement=%@ retry=%ld force=%@",
+            kVTRewardedPID, (long)vt_rwdAttempt, force ? @"YES" : @"NO");
     [[ATAdManager sharedManager] loadADWithPlacementID:kVTRewardedPID
                                                  extra:nil
                                               delegate:[self vt_shared]];
+}
+
+/// show 当下立刻预加载下一条，利用播放窗口跑瀑布流
++ (void)vt_prefetchNextInterstitialAfterShow {
+    VTAdLog(@"[插页广告] show 后立即预加载下一条（播放期间跑瀑布流）");
+    vt_interAttempt = 0;
+    [self vt_loadInterstitialForce:YES];
+}
+
++ (void)vt_prefetchNextRewardedAfterShow {
+    VTAdLog(@"[激励视频] show 后立即预加载下一条（播放期间跑瀑布流）");
+    vt_rwdAttempt = 0;
+    [self vt_loadRewardedForce:YES];
 }
 
 #pragma mark - 激励视频展示
@@ -475,9 +500,12 @@ static void VTAdLog(NSString *format, ...) {
     }
 
     VTAdLog(@"[激励视频] 广告已就绪，即将展示");
+    vt_rwdShowing = YES;
     [[ATAdManager sharedManager] showRewardedVideoWithPlacementID:kVTRewardedPID
                                                  inViewController:rootVC
                                                          delegate:[self vt_shared]];
+    // 一调用 show 就立刻 load 下一条，播放几十秒内把瀑布流跑完
+    [self vt_prefetchNextRewardedAfterShow];
 }
 
 + (void)vt_startRewardedWithHandler:(void (^)(BOOL))completion {
@@ -523,9 +551,12 @@ static void VTAdLog(NSString *format, ...) {
     }
 
     VTAdLog(@"[广告规则] 插页已就绪，即将展示（无冷启动时间限制）");
+    vt_interShowing = YES;
     [[ATAdManager sharedManager] showInterstitialWithPlacementID:kVTInterstitialPID
                                                 inViewController:rootVC
                                                         delegate:[self vt_shared]];
+    // 一调用 show 就立刻 load 下一条，展示期间把瀑布流跑完
+    [self vt_prefetchNextInterstitialAfterShow];
     VTAdLog(@"[广告规则] ====== 插页资格检查结束 ======");
 }
 
@@ -549,9 +580,11 @@ static void VTAdLog(NSString *format, ...) {
     }
 
     VTAdLog(@"[插页广告][强制] 广告已就绪，即将展示");
+    vt_interShowing = YES;
     [[ATAdManager sharedManager] showInterstitialWithPlacementID:kVTInterstitialPID
                                                 inViewController:rootVC
                                                         delegate:[self vt_shared]];
+    [self vt_prefetchNextInterstitialAfterShow];
 }
 
 #pragma mark - Banner 容器
@@ -995,6 +1028,8 @@ static void VTAdLog(NSString *format, ...) {
 - (void)interstitialDidShowForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     VTAdLog(@"[插页广告] 已展示 placement=%@ | extra=%@", placementID, [VTAdProxy vt_describeExtra:extra]);
     vt_interShowing = YES;
+    // 兜底：若 show 瞬间预加载未触发成功，这里再补一次
+    [VTAdProxy vt_prefetchNextInterstitialAfterShow];
 }
 
 - (void)interstitialDidClickForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
@@ -1005,14 +1040,20 @@ static void VTAdLog(NSString *format, ...) {
     VTAdLog(@"[插页广告] 用户关闭 placement=%@ | extra=%@", placementID, [VTAdProxy vt_describeExtra:extra]);
     vt_interShowing = NO;
     vt_interAttempt = 0;
-    [VTAdProxy vt_loadInterstitial];
+    // show 时已预加载；关闭时若仍未就绪则再补加载
+    if (![[ATAdManager sharedManager] interstitialReadyForPlacementID:kVTInterstitialPID]) {
+        VTAdLog(@"[插页广告] 关闭后下一条仍未就绪，补一次加载");
+        [VTAdProxy vt_loadInterstitialForce:YES];
+    } else {
+        VTAdLog(@"[插页广告] 关闭时下一条已就绪，可直接再展示");
+    }
 }
 
 - (void)interstitialFailedToShowForPlacementID:(NSString *)placementID error:(NSError *)error extra:(NSDictionary *)extra {
     VTAdLog(@"[插页广告] 展示失败 placement=%@ | %@ | extra=%@",
             placementID, [VTAdProxy vt_describeError:error], [VTAdProxy vt_describeExtra:extra]);
     vt_interShowing = NO;
-    [VTAdProxy vt_loadInterstitial];
+    [VTAdProxy vt_loadInterstitialForce:YES];
 }
 
 #pragma mark - ATRewardedVideoDelegate
@@ -1020,6 +1061,8 @@ static void VTAdLog(NSString *format, ...) {
 - (void)rewardedVideoDidStartPlayingForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
     VTAdLog(@"[激励视频] 开始播放 placement=%@ | extra=%@", placementID, [VTAdProxy vt_describeExtra:extra]);
     vt_rwdShowing = YES;
+    // 兜底：播放开始时确保下一条瀑布流已在跑
+    [VTAdProxy vt_prefetchNextRewardedAfterShow];
 }
 
 - (void)rewardedVideoDidEndPlayingForPlacementID:(NSString *)placementID extra:(NSDictionary *)extra {
@@ -1043,8 +1086,12 @@ static void VTAdLog(NSString *format, ...) {
     vt_rwdShowing = NO;
     vt_rwdAttempt = 0;
     [VTAdProxy vt_deliverReward:earned];
-    VTAdLog(@"[激励视频] 关闭后立即预加载下一条");
-    [VTAdProxy vt_loadRewarded];
+    if (![[ATAdManager sharedManager] rewardedVideoReadyForPlacementID:kVTRewardedPID]) {
+        VTAdLog(@"[激励视频] 关闭后下一条仍未就绪，补一次加载");
+        [VTAdProxy vt_loadRewardedForce:YES];
+    } else {
+        VTAdLog(@"[激励视频] 关闭时下一条已就绪，可直接再播放");
+    }
 }
 
 - (void)rewardedVideoDidFailToPlayForPlacementID:(NSString *)placementID error:(NSError *)error extra:(NSDictionary *)extra {
@@ -1052,7 +1099,7 @@ static void VTAdLog(NSString *format, ...) {
             placementID, [VTAdProxy vt_describeError:error], [VTAdProxy vt_describeExtra:extra]);
     vt_rwdShowing = NO;
     [VTAdProxy vt_deliverReward:NO];
-    [VTAdProxy vt_loadRewarded];
+    [VTAdProxy vt_loadRewardedForce:YES];
 }
 
 @end

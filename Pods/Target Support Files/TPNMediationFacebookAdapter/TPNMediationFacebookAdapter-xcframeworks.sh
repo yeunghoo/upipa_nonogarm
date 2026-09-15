@@ -117,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/TPNMediationFacebookAdapter/AnyThinkFacebookAdapter-6.22.0.2.0/AnyThinkFacebookAdapter.xcframework" "TPNMediationFacebookAdapter" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/TPNMediationFacebookAdapter/AnyThinkFacebookAdapter-6.22.0.2.1/AnyThinkFacebookAdapter.xcframework" "TPNMediationFacebookAdapter" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 
