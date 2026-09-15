@@ -30,10 +30,29 @@ jobs:
 
       - name: Select Xcode
         run: |
-          # Prefer latest available Xcode on the runner
+          set -euo pipefail
           ls /Applications | grep -i Xcode || true
-          sudo xcode-select -s /Applications/Xcode.app
+          # App Store Connect now requires iOS 26 SDK (Xcode 26+).
+          # macos-15 default Xcode.app is still 16.x — pick Xcode 26 explicitly.
+          XCODE_APP=""
+          for candidate in \
+            /Applications/Xcode_26.3.app \
+            /Applications/Xcode_26.2.app \
+            /Applications/Xcode_26.1.1.app \
+            /Applications/Xcode_26.0.1.app \
+            /Applications/Xcode_26.app; do
+            if [ -d "$candidate" ]; then
+              XCODE_APP="$candidate"
+              break
+            fi
+          done
+          if [ -z "$XCODE_APP" ]; then
+            echo "ERROR: Xcode 26 not found on runner"
+            exit 1
+          fi
+          sudo xcode-select -s "$XCODE_APP"
           xcodebuild -version
+          xcrun --show-sdk-version --sdk iphoneos
 
       - name: Install CocoaPods deps
         run: |
